@@ -17,8 +17,8 @@ public class PeerServerThread implements Runnable{
         try {
             // Send the status to the requesting
             OutputStream output = socket.getOutputStream();
-            output.write(String.valueOf(peer.getStatus()).getBytes());
-
+            String response = peer.response();
+            output.write(response.getBytes());
             // Close the connection
             output.close();
             socket.close();
